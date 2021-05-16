@@ -3,6 +3,8 @@ const app = express();
 const proxyget = require('./getproxy')
 //const Checker = require('./checker');
 const { exec } = require('child_process');
+const fs = require('fs');
+
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
@@ -39,6 +41,9 @@ const getallproxies = ()=>{
     proxyget.httpP();
 }
 const Checkalls= () =>{
+    fs.unlinkSync("proxyfiles/live/SOCKS4.txt")
+    fs.unlinkSync("proxyfiles/live/SOCKS5.txt")
+    fs.unlinkSync("proxyfiles/live/HTTP.txt")
     exec('node initialchecker.js proxyfiles/socks4.txt 25000', (error, stdout, stderr) => {
         if (error) {
           console.error(`error: ${error.message}`);

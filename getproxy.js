@@ -14,15 +14,16 @@ function sck4(){
     }).catch();
 }
 function sck5(){
-    axios.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all").then(rep =>{
-        fs.writeFile('./proxyfiles/socks5.txt', rep.data, err => {
-            if (err) {
-              console.error(err)
-              return
-            }
-            //file written successfully
-          })
-    }).catch();
+  console.log("dasd")
+  axios.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all").then(rep =>{
+      fs.writeFile('./proxyfiles/socks5.txt', rep.data, err => {
+          if (err) {
+            console.error(err)
+            return
+          }
+          //file written successfully
+        })
+  }).catch();
 }
 function httpP(){
     axios.get("https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all").then(rep =>{
